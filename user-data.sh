@@ -47,7 +47,7 @@ instance.save()
 EOF
 chown -R jenkins:jenkins /var/lib/jenkins
 
-# 4. RESILIENT PLUGIN INSTALLATION
+# 4. RESILIENT PLUGIN INSTALLS
 curl -fLs -o /tmp/jenkins-plugin-manager.jar \
   https://github.com/jenkinsci/plugin-installation-manager-tool/releases/download/2.14.0/jenkins-plugin-manager-2.14.0.jar
 
@@ -60,5 +60,5 @@ for p in $PLUGINS; do
     --plugins "$p" || echo "Failed to install $p, moving on..."
 done
 
-# 5. START THE SERVICE
+
 systemctl enable --now jenkins
