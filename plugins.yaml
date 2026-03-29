@@ -1,0 +1,6 @@
+plugins:
+  - artifactId: "aws-credentials"
+  - artifactId: "pipeline-github"
+  - artifactId: "terraform"
+  - artifactId: "git"
+  - artifactId: "workflow-aggregator"
