@@ -22,10 +22,11 @@ pipeline {
                 }
             }
         }
-        stage('Upload Evidence to S3') {
+      stage('Upload Evidence to S3') {
             steps {
-                sh 'aws s3 sync ./evidence/ s3://jenkins-gcheck-assets/'
-                echo "Evidence successfully uploaded to S3"
+                withCredentials([aws(credentialsId: 'aws-creds', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                    sh 'aws s3 sync ./evidence/ s3://jenkins-gcheck-assets/'
+                }
             }
         }
 
