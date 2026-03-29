@@ -10,4 +10,10 @@ This repository contains the Infrastructure as Code and Pipeline configurations 
 * `armageddon.md`: Link to my Armageddon project.
 
 ## Evidence
-Screenshots validating the Webhook (`screenshot-webhook.png`) and successful Terraform Apply (`screenshot-tf-apply.png`) have been uploaded to the `jenkins-gcheck-assets` bucket.
+Screenshots validating the Webhook (`screenshot-webhook.png`) and successful Terraform Apply (`screenshot-tf-apply.png`) and the other evidence objects below have been uploaded to the `jenkins-gcheck-assets` bucket.
+
+https://jenkins-gcheck-assets.s3.us-east-1.amazonaws.com/screenshot-tf-apply.png
+https://jenkins-gcheck-assets.s3.us-east-1.amazonaws.com/screenshot-webhook.png
+https://jenkins-gcheck-assets.s3.us-east-1.amazonaws.com/theopassconfirmationarmageddon.png
+https://jenkins-gcheck-assets.s3.us-east-1.amazonaws.com/terraformplanoutproof.png
+https://jenkins-gcheck-assets.s3.us-east-1.amazonaws.com/webhook-evidence-trigger.png
