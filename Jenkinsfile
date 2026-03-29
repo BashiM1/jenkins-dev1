@@ -22,6 +22,12 @@ pipeline {
                 }
             }
         }
+        stage('Upload Evidence to S3') {
+            steps {
+                sh 'aws s3 sync ./evidence/ s3://jenkins-gcheck-assets/'
+                echo "Evidence successfully uploaded to S3"
+            }
+        }
 
         stage('Optional Destroy') {
             steps {
