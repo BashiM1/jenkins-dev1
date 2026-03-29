@@ -13,18 +13,13 @@ pipeline {
             }
         }
 
-        stage('Terraform Init') {
+        stage('Terraform Deploy') {
             steps {
-                sh 'terraform init'
-            }
-        }
-
-        stage('Terraform Apply') {
-            steps {
-                sh '''
-                    terraform plan -out=tfplan
-                    terraform apply -auto-approve tfplan
-                '''
+                withCredentials([aws(credentialsId: 'aws-creds', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                    sh 'terraform init'
+                    sh 'terraform plan -out=tfplan'
+                    sh 'terraform apply -auto-approve tfplan'
+                }
             }
         }
 
@@ -43,7 +38,9 @@ pipeline {
                         ]
                     )
                     if (destroyChoice == 'yes') {
-                        sh 'terraform destroy -auto-approve'
+                        withCredentials([aws(credentialsId: 'aws-creds', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                            sh 'terraform destroy -auto-approve'
+                        }
                     } else {
                         echo "Skipping destroy"
                     }
